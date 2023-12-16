@@ -6,10 +6,10 @@
     <style>
         body { 
             font-family: 'Roboto', sans-serif; 
-            background-color: #f0f8ff; 
+            background-color: #f7f7f7; /* soft gray */
+            color: #333; /* dark gray for text */
             margin: 0; 
             padding: 0; 
-            transition: background-color 0.5s; 
         }
         .container { 
             width: 80%; 
@@ -17,35 +17,40 @@
             padding: 20px; 
         }
         header { 
-            background: #ffb6c1; 
+            background: #4a90e2; /* blue */
+            color: #fff; /* white text */
             padding: 10px; 
             text-align: center; 
-            transition: background-color 0.5s; 
         }
         h1, h2 { 
-            color: #333; 
-            transition: color 0.5s; 
+            margin: 0.5em 0;
         }
         .section { 
             margin-bottom: 20px; 
+            background-color: #ffffff; /* white background for sections */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+            padding: 10px;
+            border-radius: 8px; /* rounded corners */
+            transition: background-color 0.3s ease;
         }
         .section:hover {
-            background-color: #add8e6;
+            background-color: rgba(74, 144, 226, 0.1); /* light blue, more translucent */
         }
         .details { 
             display: none; 
             padding: 10px;
         }
         .toggle-button { 
-            background-color: #add8e6; 
+            background-color: #4a90e2; /* blue */
+            color: #fff; /* white text */
             padding: 5px 15px; 
             border: none; 
             border-radius: 5px; 
             cursor: pointer; 
-            transition: background-color 0.5s; 
+            transition: background-color 0.3s ease;
         }
         .toggle-button:hover { 
-            background-color: #87ceeb; 
+            background-color: #357ABD; /* slightly darker blue */
         }
     </style>
 </head>
