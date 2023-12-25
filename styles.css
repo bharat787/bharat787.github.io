@@ -11,8 +11,12 @@ body {
     margin: 20px;
 }
 
-#introduction h1, #introduction p {
+#introduction h1 {
     color: #7dcfff;
+}
+
+#introduction p {
+    color: #9aa5ce
 }
 
 #projects h2, #projects p {
