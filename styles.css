@@ -50,19 +50,6 @@ h2 {
     align-items: center;
 }
 
-@keyframes initialFade {
-    0% {
-        --active: 1;
-    }
-    100% {
-        --active: 0;
-    }
-}
-
-.icon {
-    animation: initialFade 0.5s forwards;
-}
-
 
 .icon {
     width: 96px;
