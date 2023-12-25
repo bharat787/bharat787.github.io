@@ -1,118 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bharat Gupta's Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            background-color: #f7f7f7; /* soft gray */
-            color: #333; /* dark gray for text */
-            margin: 0; 
-            padding: 0; 
-        }
-        .container { 
-            width: 80%; 
-            margin: auto; 
-            padding: 20px; 
-        }
-        header { 
-            background: #4a90e2; /* blue */
-            color: #fff; /* white text */
-            padding: 10px; 
-            text-align: center; 
-        }
-        h1, h2 { 
-            margin: 0.5em 0;
-        }
-        .section { 
-            margin-bottom: 20px; 
-            background-color: #ffffff; /* white background for sections */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
-            padding: 10px;
-            border-radius: 8px; /* rounded corners */
-            transition: background-color 0.3s ease;
-        }
-        .section:hover {
-            background-color: rgba(74, 144, 226, 0.1); /* light blue, more translucent */
-        }
-        .details { 
-            display: none; 
-            padding: 10px;
-        }
-        .toggle-button { 
-            background-color: #4a90e2; /* blue */
-            color: #fff; /* white text */
-            padding: 5px 15px; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            transition: background-color 0.3s ease;
-        }
-        .toggle-button:hover { 
-            background-color: #357ABD; /* slightly darker blue */
-        }
-    </style>
+    <title>Your Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Bharat Gupta</h1>
-        <p>Email: bgbharat787@gmail.com | Mobile: +1-602-582-5302</p>
-    </header>
-    <div class="container">
-        <!-- Education Section -->
-        <div class="section">
-            <h2>Education</h2>
-            <button class="toggle-button" onclick="toggleDetails('education-details')">Show Details</button>
-            <div id="education-details" class="details">
-                <p>Arizona State University, Master of Computer Science</p>
-                <p>Birla Institute of Technology and Science, Bachelor of Engineering in Electrical and Electronics; GPA: 8.1/10.0</p>
-            </div>
-        </div>
-
-        <!-- Experience Section -->
-        <div class="section">
-            <h2>Experience</h2>
-            <button class="toggle-button" onclick="toggleDetails('experience-details')">Show Details</button>
-            <div id="experience-details" class="details">
-                <p><strong>Amazon</strong>, Software Development Engineer Intern, Gurgaon India, Jan 2022 - June 2022</p>
-                <p><strong>Rippl</strong>, Software Development Engineer Intern, Gurgaon India, April 2021 - July 2021</p>
-                <p><strong>Classup</strong>, Software Development Engineer Intern, Remote, November 2020 - January 2021</p>
-                <p><strong>GuruQ</strong>, Full Stack Freelancer, Remote, January 2022 - July 2022</p>
-            </div>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="section">
-            <h2>Projects</h2>
-            <button class="toggle-button" onclick="toggleDetails('projects-details')">Show Details</button>
-            <div id="projects-details" class="details">
-                <p>Drone Mapping and Species Identification of Mangroves</p>
-                <p>Energy Aware Path Planning for Drone Swarms</p>
-            </div>
-        </div>
-
-        <!-- Skills Section -->
-        <div class="section">
-            <h2>Programming Skills</h2>
-            <button class="toggle-button" onclick="toggleDetails('skills-details')">Show Details</button>
-            <div id="skills-details" class="details">
-                <p>Languages: C/C++, Python, Java, JavaScript, Kotlin, Ruby, Bash</p>
-                <p>Technologies: React, AWS, GraphQL, TypeORM, PostgreSQL, Git</p>
-            </div>
-        </div>
+    <div class="section" id="introduction">
+        <h1>Hi, I'm Bharat ヾ(＾-＾)ノ</h1>
+        <p>I'm a tech generalist, more aptly described as <em>"Jack of all trades, and mastering the art of learning".</em></p>
+        <p>Over the years, I've got my hands dirty coding (or reverse engineering) mobile and web apps dabbled with smart contracts and played around with drones, Raspis' and Arduinos.</p>
+        <p>Currently completing my Masters in Computer Science at Arizona State University, I've also worked with MNCs and startups. I also frequent hackathons.</p>
     </div>
-    <script>
-        function toggleDetails(id) {
-            var details = document.getElementById(id);
-            if (details.style.display === 'none' || details.style.display === '') {
-                details.style.display = 'block';
-                event.target.textContent = 'Hide Details';
-            } else {
-                details.style.display = 'none';
-                event.target.textContent = 'Show Details';
-            }
-        }
-    </script>
+    
+    <div class="section" id="projects">
+        <h2>Projects</h2>
+        <!-- Project items here -->
+        <p>WIP</p>
+    </div>
+    
+    <div class="section" id="workex">
+        <h2>Work Experience</h2>
+        <p>WIP</p>
+        <!-- Work experience items here -->
+    </div>
 </body>
 </html>

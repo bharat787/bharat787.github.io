@@ -1,0 +1,46 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    color: #1a1b26;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1b26;
+}
+
+.section {
+    padding: 20px;
+    margin: 20px;
+}
+
+#introduction h1, #introduction p {
+    color: #7dcfff;
+}
+
+#projects h2, #projects p {
+    color: #9ece6a;
+}
+
+#workex h2, #workex p {
+    color: #e0af68;
+}
+
+h1, h2 {
+    font-family: 'Menlo', monospace;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .section {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* Add more styling as needed */
