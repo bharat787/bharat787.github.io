@@ -88,7 +88,16 @@ canvas {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 864px) {
+
+    body {
+        padding: 0 10%;
+    }
+
+    .responsive-text {
+        display: block;
+    }
+
     .section {
         margin: 10px;
         padding: 10px;
@@ -96,6 +105,7 @@ canvas {
 
     h1 {
         font-size: 24px;
+        
     }
 
     h2 {
@@ -103,7 +113,7 @@ canvas {
     }
 
     .icon {
-        width: 34px;
+        width: 48px;
     }
 }
 
