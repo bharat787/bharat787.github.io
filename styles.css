@@ -127,6 +127,7 @@ hr {
 }
 
 .social-icon img {
+    width: 25px;
     fill: #f6f7fb;
     filter: brightness(0) invert(1);
 }
@@ -188,6 +189,12 @@ canvas {
     #workex h3 {
         text-align: right;
     
+    }
+
+    .social-icon img {
+        width: 25px;
+        fill: #f6f7fb;
+        filter: brightness(0) invert(1);
     }
 }
 
