@@ -116,11 +116,14 @@ hr {
     filter: contrast(0);
 }
 
-#socials {
+.socials {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around
+    justify-content: space-around;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin: 20px;
 }
 
 .social-icon {
