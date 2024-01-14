@@ -163,6 +163,11 @@ canvas {
     .icon {
         width: 48px;
     }
+
+    #workex h3 {
+        text-align: right;
+    
+    }
 }
 
 /* Add more styling as needed */
