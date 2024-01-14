@@ -70,6 +70,12 @@ body {
     justify-content: space-between;
 }
 
+#socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around
+}
 
 #stack h2 {
     color: #2ac3de;
@@ -108,6 +114,21 @@ hr {
 
 .icon img {
     filter: contrast(0);
+}
+
+.social-icon {
+    width: 25px;
+    aspect-ratio: 1;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+    color: #f6f7fb;
+
+}
+
+.social-icon img {
+    fill: #f6f7fb;
+    filter: brightness(0) invert(1);
 }
 
 canvas {
