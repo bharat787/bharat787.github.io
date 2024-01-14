@@ -116,7 +116,7 @@ hr {
     filter: contrast(0);
 }
 
-.socials {
+#socials {
     display: flex;
     flex-direction: row;
     align-items: center;
