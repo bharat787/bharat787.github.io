@@ -116,6 +116,13 @@ hr {
     filter: contrast(0);
 }
 
+.socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around
+}
+
 .social-icon {
     aspect-ratio: 1;
     position: relative;
