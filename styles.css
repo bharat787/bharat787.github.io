@@ -117,20 +117,18 @@ hr {
 }
 
 .social-icon {
-    width: 25px;
     aspect-ratio: 1;
     position: relative;
     margin: 0 auto;
     cursor: pointer;
-    color: #f6f7fb;
-
 }
 
 .social-icon img {
-    width: 25px;
-    fill: #f6f7fb;
-    filter: brightness(0) invert(1);
+    width: 25px; /* Control size here */
+    height: auto; /* Maintain aspect ratio */
+    filter: brightness(0) invert(1); /* For color inversion */
 }
+
 
 canvas {
     width: 100%;
