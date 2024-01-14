@@ -133,7 +133,7 @@ canvas {
 @media (max-width: 864px) {
 
     body {
-        padding: 0 10%;
+        padding: 0 2%;
     }
 
     .responsive-text {
@@ -146,14 +146,17 @@ canvas {
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 26px;
 
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
+    h3 {
+        font-size: 20px;
+    }
     .icon {
         width: 48px;
     }
