@@ -346,6 +346,16 @@ canvas {
         fill: #f6f7fb;
         filter: brightness(0) invert(1);
     }
+
+    .card{
+        min-width: 16rem;
+
+        .card-github {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 }
 
 /* Add more styling as needed */
