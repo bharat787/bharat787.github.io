@@ -23,6 +23,7 @@ body {
 #introduction p {
     color: #9aa5ce;
     text-align: justify;
+    font-size: large;
 }
 
 #quote {
@@ -32,6 +33,7 @@ body {
 #projects h2,
 #projects p {
     color: #9ece6a;
+    font-size: large;
 }
 
 section {
@@ -169,6 +171,12 @@ section {
 #open-source h2,
 #open-source p {
     color: #7aa2f7;
+    /* font-size: large; */
+
+}
+
+#open-source p {
+    font-size: large;
 }
 
 #open-source ul {
@@ -192,6 +200,10 @@ section {
     color: #cfc9c2;
     text-align: justify;
 
+}
+
+#workex p {
+    font-size: large;
 }
 
 #workex h3,
