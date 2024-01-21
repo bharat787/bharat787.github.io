@@ -33,6 +33,9 @@ body {
 #projects h2,
 #projects p {
     color: #9ece6a;
+}
+
+#projects p {
     font-size: large;
 }
 
@@ -112,6 +115,15 @@ section {
             margin: 1rem;
         }
 
+        .card-description#other-projects {
+            display: flex;
+            justify-content: center;
+            img {
+                width: 5rem;
+                height: 5rem;
+                filter: brightness(0) invert(1);
+            }
+        }
         .card-github {
             width: 2.5rem;
             height: 2.5rem;
@@ -131,8 +143,13 @@ section {
         color: #d0f0ee;
         transition: 0.5s;
         min-width: 18rem;
+
         .card-title {
             height: 3.5rem;
+        }
+
+        .card-title#other-projects {
+            height: 5rem;
         }
 
         .card-github {
@@ -143,16 +160,21 @@ section {
         }
     }
 
+    .card.end:hover {
+        min-width: 15rem;
+    }
+
     .card.blue {
-        /* background-color: #0077B6; 
-        color: #d6ecf5;  */
         color: #0d47a1; 
         background-color: #bbdefb; 
     }
 
+    .card.end {
+        background-color: #0d47a1; 
+        color: #bbdefb;
+    }
+
     .card.blue:hover {
-        /* color: #0077B6; 
-        background-color: #d6ecf5; */
         background-color: #0d47a1; 
         color: #bbdefb;
     }
