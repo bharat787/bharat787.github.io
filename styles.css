@@ -217,31 +217,6 @@ section {
     color: orange;
 }
 
-#workex h2,
-#workex p {
-    color: #cfc9c2;
-    text-align: justify;
-
-}
-
-#workex p {
-    font-size: large;
-}
-
-#workex h3,
-h5 {
-    color: #e0af68;
-    text-align: justify;
-
-}
-
-.workex-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
 #socials {
     display: flex;
     flex-direction: row;
@@ -368,11 +343,6 @@ canvas {
 
     .icon {
         width: 48px;
-    }
-
-    #workex h3 {
-        text-align: right;
-
     }
 
     .social-icon img {

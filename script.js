@@ -1,16 +1,12 @@
-import { GUI } from 'https://cdn.skypack.dev/dat.gui';
 import gsap from 'https://cdn.skypack.dev/gsap@3.11.0';
-const CANVAS = document.querySelector('canvas');
-const CONTEXT = CANVAS.getContext('2d');
+import './components/work-experience/work-experience.js';
 
 gsap.ticker.fps(12);
 
-
+console.clear();
 
 const AMOUNT = 24;
 const SIZE = 96 / AMOUNT;
-
-console.clear();
 
 class GlitterBoard {
     constructor(el) {
@@ -50,9 +46,6 @@ class GlitterBoard {
     }
 }
 
-
 const BOARDS = [];
-
-const ICONS = document.querySelector('.icons');
 
 document.querySelectorAll('.icon').forEach(Icon => BOARDS.push(new GlitterBoard(Icon)));

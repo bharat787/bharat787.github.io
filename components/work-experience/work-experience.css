@@ -1,0 +1,217 @@
+/* Work experience: unified scroll — each slide is logo + detail in one row */
+
+#workex h2,
+#workex p {
+    color: #cfc9c2;
+    text-align: justify;
+}
+
+#workex p {
+    font-size: large;
+}
+
+#workex h3,
+#workex h5 {
+    color: #e0af68;
+    text-align: justify;
+}
+
+#workex.section--workex {
+    display: flex;
+    flex-direction: column;
+    min-height: min(88dvh, 52rem);
+}
+
+.section--workex .workex-heading {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: #1a1b26;
+    padding: 0.25rem 0 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.workex-layout {
+    --workex-viewport-h: min(38dvh, 28rem);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: min(58dvh, 44rem);
+}
+
+.workex-unified-scroll {
+    width: 100%;
+    max-width: min(96vw, 64rem);
+    height: var(--workex-viewport-h);
+    overflow-x: hidden;
+    overflow-y: auto;
+    contain: layout paint;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 6px;
+}
+
+.workex-unified-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+.workex-unified-scroll:focus-visible {
+    outline: 2px solid #7dcfff;
+    outline-offset: 3px;
+}
+
+.workex-slide {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: clamp(1rem, 3vw, 2.25rem);
+    box-sizing: border-box;
+    min-height: var(--workex-viewport-h);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.workex-slide__logo {
+    position: relative;
+    flex: 0 0 min(42vw, 22rem);
+    max-width: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.workex-slide__detail {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.35rem 0.15rem 0.5rem 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+
+.workex-slide__detail h3 {
+    margin-top: 0;
+    margin-bottom: 0.35em;
+}
+
+.workex-slide__detail h5 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.workex-slide__detail p {
+    margin-top: 0.75em;
+    margin-bottom: 0;
+}
+
+.workex-slide__logo .workex-logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: var(--workex-logo-ar, 1) / 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .workex-unified-scroll {
+        scroll-snap-type: none;
+    }
+}
+
+.workex-logo {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    height: var(--workex-logo-h, 2.5em);
+    aspect-ratio: var(--workex-logo-ar, 1) / 1;
+    width: auto;
+}
+
+.workex-logo canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    mask: none;
+    -webkit-mask: none;
+    aspect-ratio: unset;
+    transition: none;
+}
+
+.workex-logo__source {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+@media (max-width: 864px) {
+    .workex-layout {
+        --workex-viewport-h: min(34dvh, 24rem);
+        align-items: stretch;
+        justify-content: flex-start;
+        min-height: 0;
+    }
+
+    /* Taller viewport so stacked logo + copy fits; one scroll drives both. */
+    .workex-unified-scroll {
+        height: min(78dvh, 42rem);
+    }
+
+    .workex-slide {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        min-height: 0;
+    }
+
+    .workex-slide__logo {
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: min(30dvh, 14rem);
+    }
+
+    .workex-slide__detail {
+        flex: 0 0 auto;
+        min-height: 0;
+    }
+
+    #workex .workex-slide__detail h3 {
+        text-align: left;
+    }
+}
