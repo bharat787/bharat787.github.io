@@ -30,163 +30,12 @@ body {
     color: #f7768e
 }
 
-#projects h2,
-#projects p {
-    color: #9ece6a;
-}
-
-#projects p {
-    font-size: large;
-}
-
 section {
     display: grid;
     grid-template-columns: var(--page-margin) [center-start] 1fr [center-end] var(--page-margin);
 
     &>* {
         grid-column: center;
-    }
-}
-
-.cards-wrapper {
-    grid-column: center-start / -1;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1rem;
-    overflow: auto;
-    padding-bottom: 1rem;
-    padding-right: var(--page-margin);
-    
-    /* &::-webkit-scrollbar {
-        display: none;
-    }
-
-    
-    -ms-overflow-style: none; 
-    scrollbar-width: none;  */
-
-    /* Styles for the scrollbar */
-    &::-webkit-scrollbar {
-        width: 5px; /* Width of the scrollbar */
-        height: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #5752521d; /* Color of the scrollbar track */
-        border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: #505151ae; /* Color of the scrollbar thumb */
-        border-radius: 10px; /* Roundness of the scrollbar thumb */
-        border: 2px solid #d7d7d7; /* Creates a border around the scrollbar thumb */
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: #15928A; /* Color of scrollbar thumb when hovered */
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    .card {
-        display: flex;
-        flex-direction: column;
-        /* place-content: center; */
-        background-color: #d0f0ee;
-        color: #15928A;
-        font-size: 1.5rem;
-        height: 20rem;
-        min-width: 15rem;
-        border-radius: 1rem;
-        /* padding: 1rem; */
-
-        .card-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            margin: 1rem;
-            height: 5rem;
-            transition: height 0.5s;
-        }
-
-        .card-description {
-            font-size: 1.2rem;
-            margin: 1rem;
-        }
-
-        .card-description#other-projects {
-            display: flex;
-            justify-content: center;
-            img {
-                width: 5rem;
-                height: 5rem;
-                filter: brightness(0) invert(1);
-            }
-        }
-        .card-github {
-            width: 2.5rem;
-            height: 2.5rem;
-            align-self: center;
-            opacity: 0; /* Start with fully transparent */
-            visibility: hidden; /* Start with hidden visibility */
-            transition: opacity 0.7s, visibility 0.7s;
-            
-            img {
-                filter: brightness(0) invert(1);
-            }
-        }
-    }
-
-    .card:hover {
-        background-color: #15928A;
-        color: #d0f0ee;
-        transition: 0.5s;
-        min-width: 18rem;
-
-        .card-title {
-            height: 3.5rem;
-        }
-
-        .card-title#other-projects {
-            height: 5rem;
-        }
-
-        .card-github {
-            display: block;
-            opacity: 1; /* Make fully visible */
-            visibility: visible;
-            transition-delay: 0.2s;
-        }
-    }
-
-    .card.end:hover {
-        min-width: 15rem;
-    }
-
-    .card.blue {
-        color: #0d47a1; 
-        background-color: #bbdefb; 
-    }
-
-    .card.end {
-        background-color: #0d47a1; 
-        color: #bbdefb;
-    }
-
-    .card.blue:hover {
-        background-color: #0d47a1; 
-        color: #bbdefb;
-    }
-    
-    .card.green {
-        background-color: #d0f0ee; /* Green */
-        color: #15928A; /* White text */
-    }
-    
-    .card.green:hover {
-        color: #d0f0ee; /* Green */
-        background-color: #15928A; /* White text */
     }
 }
 
@@ -231,6 +80,11 @@ section {
 h1,
 h2 {
     font-family: 'Menlo', monospace;
+}
+
+/* Kaomoji / CJK: Menlo has no glyphs; override so the face renders from system Japanese-capable fonts */
+.responsive-text {
+    font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
 }
 
 hr {
@@ -349,16 +203,6 @@ canvas {
         width: 25px;
         fill: #f6f7fb;
         filter: brightness(0) invert(1);
-    }
-
-    .card{
-        min-width: 16rem;
-
-        .card-github {
-            display: block;
-            opacity: 1;
-            visibility: visible;
-        }
     }
 }
 

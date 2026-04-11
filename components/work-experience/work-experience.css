@@ -19,7 +19,7 @@
 #workex.section--workex {
     display: flex;
     flex-direction: column;
-    min-height: min(88dvh, 52rem);
+    min-height: 0;
 }
 
 .section--workex .workex-heading {
@@ -27,25 +27,82 @@
     top: 0;
     z-index: 5;
     background-color: #1a1b26;
-    padding: 0.25rem 0 1rem;
+    padding: 0.25rem 0 0.5rem;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 .workex-layout {
-    --workex-viewport-h: min(38dvh, 28rem);
+    /* Shared height for scroll port + each slide; lower = less scroll between employers. */
+    --workex-viewport-h: min(30dvh, 22rem);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: 0;
+}
+
+.workex-scroll-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: min(96vw, 64rem);
+}
+
+.workex-slide-nav {
+    flex: 0 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    flex: 1 1 auto;
-    min-height: min(58dvh, 44rem);
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+}
+
+.workex-slide-nav__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.workex-slide-nav__btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #fff;
+    color: #fff;
+}
+
+.workex-slide-nav__btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.workex-slide-nav__btn[hidden] {
+    display: none !important;
+}
+
+.workex-slide-nav__icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    display: block;
 }
 
 .workex-unified-scroll {
     width: 100%;
-    max-width: min(96vw, 64rem);
+    max-width: none;
+    box-sizing: border-box;
     height: var(--workex-viewport-h);
     overflow-x: hidden;
     overflow-y: auto;
@@ -74,40 +131,33 @@
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    gap: clamp(1rem, 3vw, 2.25rem);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
     box-sizing: border-box;
     min-height: var(--workex-viewport-h);
     scroll-snap-align: start;
-    scroll-snap-stop: always;
+    /* Lets trackpads move past a slide without a long mandatory stop. */
+    scroll-snap-stop: normal;
 }
 
 .workex-slide__logo {
     position: relative;
-    flex: 0 0 min(42vw, 22rem);
-    max-width: 100%;
+    flex: 1 1 0;
     min-width: 0;
     min-height: 0;
     padding: 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
 }
 
 .workex-slide__detail {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
     min-height: 0;
     box-sizing: border-box;
     margin: 0;
-    padding: 0.35rem 0.15rem 0.5rem 0;
+    padding: 0.35rem 0.15rem 0.35rem 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background-color: rgba(0, 0, 0, 0.12);
-    border-radius: 6px;
 }
 
 .workex-slide__detail h3 {
@@ -190,20 +240,22 @@
 
     /* Taller viewport so stacked logo + copy fits; one scroll drives both. */
     .workex-unified-scroll {
-        height: min(78dvh, 42rem);
+        --workex-slide-min-h: min(78dvh, 42rem);
+        height: var(--workex-slide-min-h);
     }
 
     .workex-slide {
         flex-direction: column;
         align-items: stretch;
-        gap: 0.75rem;
-        min-height: 0;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: var(--workex-slide-min-h);
     }
 
     .workex-slide__logo {
         flex: 0 0 auto;
         width: 100%;
-        min-height: min(30dvh, 14rem);
+        min-height: min(26dvh, 12rem);
     }
 
     .workex-slide__detail {

@@ -4,10 +4,10 @@ function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-/** Uniform dot matrix: same radius & pitch (CSS px) on every logo. */
-const WORKEX_DOT_PITCH_CSS = 5.25;
-const WORKEX_DOT_RADIUS_CSS = 2.4;
-const WORKEX_DOT_MIN_COLS = 14;
+/** Uniform dot matrix: same radius & pitch (CSS px) on every logo. Smaller pitch ⇒ denser grid. */
+const WORKEX_DOT_PITCH_CSS = 3.85;
+const WORKEX_DOT_RADIUS_CSS = 1.75;
+const WORKEX_DOT_MIN_COLS = 20;
 
 class WorkLogoDotMatrix {
     constructor(el) {
@@ -182,4 +182,71 @@ function initWorkExperience() {
 
 }
 
+function initWorkexSlideNav() {
+    const scrollEl = document.getElementById('workex-billboard');
+    const btnUp = document.querySelector('.workex-slide-nav__btn--up');
+    const btnDown = document.querySelector('.workex-slide-nav__btn--down');
+    if (!scrollEl || !btnUp || !btnDown) return;
+
+    const slides = () => Array.from(scrollEl.querySelectorAll('.workex-slide'));
+
+    function slideIndexFromScroll() {
+        const list = slides();
+        if (!list.length) return 0;
+        let idx = 0;
+        const st = scrollEl.scrollTop;
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].offsetTop <= st + 4) idx = i;
+        }
+        return idx;
+    }
+
+    function updateNavVisibility() {
+        const list = slides();
+        const i = slideIndexFromScroll();
+        const last = list.length - 1;
+        btnUp.hidden = i <= 0;
+        btnDown.hidden = last < 0 || i >= last;
+    }
+
+    function scrollBehavior() {
+        return prefersReducedMotion() ? 'auto' : 'smooth';
+    }
+
+    btnUp.addEventListener('click', () => {
+        const list = slides();
+        const i = slideIndexFromScroll();
+        if (i > 0) {
+            scrollEl.scrollTo({ top: list[i - 1].offsetTop, behavior: scrollBehavior() });
+        }
+    });
+
+    btnDown.addEventListener('click', () => {
+        const list = slides();
+        const i = slideIndexFromScroll();
+        if (i < list.length - 1) {
+            scrollEl.scrollTo({ top: list[i + 1].offsetTop, behavior: scrollBehavior() });
+        }
+    });
+
+    let scrollRafId = 0;
+    scrollEl.addEventListener(
+        'scroll',
+        () => {
+            if (scrollRafId) return;
+            scrollRafId = requestAnimationFrame(() => {
+                scrollRafId = 0;
+                updateNavVisibility();
+            });
+        },
+        { passive: true }
+    );
+
+    const ro = new ResizeObserver(() => updateNavVisibility());
+    ro.observe(scrollEl);
+
+    updateNavVisibility();
+}
+
 initWorkExperience();
+initWorkexSlideNav();
