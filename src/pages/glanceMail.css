@@ -1,0 +1,67 @@
+body.page-glance-mail {
+  padding: 0 10%;
+  color: #9aa5ce;
+}
+
+.glance-mail-root {
+  font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
+  color: #9aa5ce;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1b26;
+  text-align: justify;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.glance-mail-root .container {
+  background-color: #1a1b26;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.glance-mail-root h1 {
+  color: #9aa5ce;
+}
+
+.glance-mail-root h2 {
+  color: #7aa2f7;
+}
+
+.glance-mail-root h3 {
+  color: #f7768e;
+}
+
+.glance-mail-root p,
+.glance-mail-root li {
+  color: #cfc9c2;
+  font-size: large;
+}
+
+.glance-mail-root ul {
+  list-style-type: none;
+}
+
+.glance-mail-root footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #181926;
+  color: #9aa5ce;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.glance-mail-root a {
+  color: #bb9af7;
+}
+
+.glance-mail-root a:visited {
+  color: #7aa2f7;
+}
+
+.glance-mail-root a:hover {
+  color: #ffcc66;
+}
