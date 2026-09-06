@@ -7,8 +7,8 @@ import {
   BRIDGE_VIEW,
   type BridgeStrokeId,
 } from '../scenes/bridgeGeometry'
-import { clearStipple, renderStipple } from '../dither/stipplePath'
-import { createOpenPathMorph, createContourMorph, samplePathByX } from '../scenes/openPathMorph'
+import { clearStipple } from '../dither/stipplePath'
+import { createOpenPathMorph, createContourMorph } from '../scenes/openPathMorph'
 import {
   SKYLINE_MORPH_TARGET,
   SKYLINE_REVEAL_PATHS,
@@ -16,11 +16,7 @@ import {
 import {
   BRIDGE_FADE_STROKES,
   BRIDGE_RENDER_ORDER,
-  DITHER_TIMING,
   MORPH_SEGMENT_LENGTH,
-  STIPPLE_CELL_SIZE,
-  STIPPLE_DOT_RADIUS,
-  STIPPLE_SAMPLE_LENGTH,
   MORPH_TIMING,
   SKYLINE_MORPH_STROKE,
 } from '../scenes/morphPlan'
@@ -131,100 +127,28 @@ export function TransitionScene() {
           MORPH_SEGMENT_LENGTH,
           BRIDGE_VIEW.width,
         )
-        const cableSamples = samplePathByX(
-          cablePath,
-          STIPPLE_SAMPLE_LENGTH,
-          BRIDGE_VIEW.width,
-        )
         const morphState = { t: 0 }
-        const ditherState = {
-          threshold: DITHER_TIMING.thresholdStart,
-          crisp: 1,
-          stippleMix: 0,
-        }
+        const handsMorph = createContourMorph(SKYLINE_MORPH_TARGET, WAVING_HAND_OUTLINE)
+        const handsState = { t: 0, mix: 0 }
 
         gsap.set(skylineEl, { opacity: 1 })
         gsap.set(stippleEl, { opacity: 0 })
         clearStipple(stippleEl)
 
-        const handsMorph = createContourMorph(SKYLINE_MORPH_TARGET, WAVING_HAND_OUTLINE)
-        const handsState = { t: 0, mix: 0, crisp: 0 }
+        // Keep the contour solid throughout both morphs, including reverse scrolling.
         const syncCableVisual = () => {
-          if (handsState.mix > 0) {
-            skylineEl.setAttribute('d', handsMorph.path(handsState.t))
-            renderStipple(stippleEl, handsMorph.points(handsState.t), {
-              threshold: 0.7 + handsState.t * 0.28,
-              cellSize: STIPPLE_CELL_SIZE, dotRadius: STIPPLE_DOT_RADIUS,
-            })
-            gsap.set(skylineEl, { opacity: 1 - handsState.mix + handsState.mix * handsState.crisp })
-            gsap.set(stippleEl, { opacity: handsState.mix * (1 - handsState.crisp) })
-            return
-          }
-          const inStipplePhase = ditherState.stippleMix > 0.001
-
-          if (inStipplePhase) {
-            const points =
-              morphState.t > 0 ? morph.points(morphState.t) : cableSamples
-            renderStipple(stippleEl, points, {
-              threshold: ditherState.threshold,
-              cellSize: STIPPLE_CELL_SIZE,
-              dotRadius: STIPPLE_DOT_RADIUS,
-            })
-            skylineEl.setAttribute('d', morphState.t >= 1 ? SKYLINE_MORPH_TARGET : morph.path(morphState.t))
-          } else {
-            skylineEl.setAttribute('d', cablePath)
-            clearStipple(stippleEl)
-          }
-
-          const pathOpacity =
-            1 - ditherState.stippleMix + ditherState.stippleMix * ditherState.crisp
-          const stippleOpacity = ditherState.stippleMix * (1 - ditherState.crisp)
-
-          gsap.set(skylineEl, { opacity: pathOpacity })
-          gsap.set(stippleEl, { opacity: stippleOpacity })
+          const path = handsState.mix > 0
+            ? handsMorph.path(handsState.t)
+            : morphState.t <= 0 ? cablePath
+            : morphState.t >= 1 ? SKYLINE_MORPH_TARGET
+            : morph.path(morphState.t)
+          skylineEl.setAttribute('d', path)
         }
 
-        tl.to(
-          ditherState,
-          {
-            stippleMix: 1,
-            crisp: 0,
-            duration: DITHER_TIMING.stippleInDuration,
-          },
-          DITHER_TIMING.stippleInStart,
-        )
-
-        tl.to(
-          ditherState,
-          {
-            threshold: DITHER_TIMING.thresholdEnd,
-            duration: morphDuration,
-          },
-          morphStart,
-        )
-
-        tl.to(
-          morphState,
-          {
-            t: 1,
-            duration: morphDuration,
-          },
-          morphStart,
-        )
-
-        tl.to(
-          ditherState,
-          {
-            crisp: 1,
-            duration: DITHER_TIMING.crispDuration,
-          },
-          DITHER_TIMING.crispStart,
-        )
-        // A hold on the finished skyline separates the second and third artworks.
+        tl.to(morphState, { t: 1, duration: morphDuration }, morphStart)
+        // Preserve the original hold and morph timing.
         tl.to(handsState, { mix: 1, duration: 0.08 }, 1.65)
         tl.to(handsState, { t: 1, duration: 0.65 }, 1.69)
-        tl.to(handsState, { crisp: 1, duration: 0.12 }, 2.28)
-        // One renderer owns d/opacity, including during reverse scrubbing.
         tl.eventCallback('onUpdate', syncCableVisual)
       }
 
