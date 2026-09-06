@@ -470,3 +470,98 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .scroll-chevron--initial svg { animation: none; }
 }
+
+/* Both layers share a grid cell, preserving the list's space during replacement. */
+.explorer-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  scroll-margin-top: 30px;
+}
+.panel-layer {
+  grid-area: 1 / 1;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.panel-layer.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.explorer-names {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.explorer-names li {
+  border-top: 1px solid #ccc8be;
+}
+.explorer-names button {
+  display: block;
+  width: 100%;
+  padding: 18px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: 500 20px/1.4 'Space Grotesk', sans-serif;
+  letter-spacing: -.025em;
+  cursor: pointer;
+  transition: color 120ms, padding-left 160ms;
+}
+.explorer-names button:hover, .explorer-names button[aria-pressed=true] {
+  color: var(--accent);
+  padding-left: 8px;
+}
+.explorer-names button:focus-visible, .view-rest:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.work .focus-details h2 {
+  margin-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+.focus-details h2:focus { outline: none; }
+.view-rest {
+  display: block;
+  margin: 0 0 30px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid #b0aca1;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.view-rest:hover { color: var(--accent); }
+.detail-role { color: var(--accent); font-size: 14px; margin: 0 0 20px; }
+.detail-description { font-size: 16px; line-height: 1.85; color: var(--muted); }
+.detail-link { display: inline-block; margin-top: 20px; padding-bottom: 5px; border-bottom: 1px solid currentColor; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) {
+  .panel-layer, .explorer-names button { transition: none; }
+  .focus-details { animation: none; }
+}
+
+/* Clip at the column edge so details emerge from behind their source column. */
+.explorer-panel { clip-path: inset(-8px 0); }
+.detail-layer--company { --slide-origin: -100%; }
+.detail-layer--project { --slide-origin: 100%; }
+.detail-layer.motion-entering {
+  animation: explorer-slide-in 240ms cubic-bezier(.22,.75,.25,1) both;
+}
+.detail-layer.motion-closing {
+  animation: explorer-slide-out 200ms cubic-bezier(.4,0,.6,1) both;
+}
+@keyframes explorer-slide-in {
+  from { transform: translateX(var(--slide-origin)); }
+  to { transform: translateX(0); }
+}
+@keyframes explorer-slide-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--slide-origin)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .detail-layer.motion-entering, .detail-layer.motion-closing { animation-duration: 1ms; }
+}
