@@ -66,11 +66,12 @@ export function TransitionScene() {
       // GSAP mutates d directly; restore the current geometry on every setup.
       skylineEl?.setAttribute('d', cablePath)
 
+      const scroller = document.getElementById('portfolio-scroll')!
       const sceneTime = () => {
         const work = document.getElementById('work')!
         const connect = document.getElementById('socials')!
-        const y = window.scrollY
-        const vh = window.innerHeight
+        const y = scroller.scrollTop
+        const vh = scroller.clientHeight
         const clamp = (n: number) => Math.max(0, Math.min(1, n))
         const firstEnd = work.offsetTop - vh * 0.35
         const secondStart = work.offsetTop + work.offsetHeight - vh * 0.65
@@ -91,7 +92,7 @@ export function TransitionScene() {
         }
         showStage(0)
         ScrollTrigger.create({
-          trigger: document.documentElement, start: 0, end: 'max',
+          scroller, trigger: document.querySelector('main'), start: 0, end: 'max',
           onUpdate: () => showStage(sceneTime()),
           onRefresh: () => showStage(sceneTime()),
         })
@@ -249,7 +250,7 @@ export function TransitionScene() {
       tl.to({}, { duration: 0.25 }, 2.57)
 
       ScrollTrigger.create({
-        trigger: document.documentElement,
+        scroller, trigger: document.querySelector('main'),
         start: 0,
         end: 'max',
         onUpdate: () => tl.time(sceneTime()),
