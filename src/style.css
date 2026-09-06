@@ -565,3 +565,19 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .detail-layer.motion-entering, .detail-layer.motion-closing { animation-duration: 1ms; }
 }
+
+/* Match the fitted 1400 × 380 drawing's horizontal bounds. */
+:root {
+  --artwork-width: min(100vw, calc(var(--art-height) * 3.6842105263));
+  --content-gutter: max(24px, calc((100vw - var(--artwork-width)) / 2));
+}
+header, .intro, .work, .connect {
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+.work {
+  column-gap: clamp(32px, 6vw, 88px);
+}
+@media (max-width: 760px) {
+  :root { --content-gutter: max(24px, 7vw); }
+}
