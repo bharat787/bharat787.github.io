@@ -663,3 +663,5 @@ header, .intro, .work, .connect {
   .accordion-body .detail-role { margin: 0 0 12px; }
   .accordion-body .detail-link { margin-top: 14px; }
 }
+
+.intro-copy p a { text-decoration: underline; text-underline-offset: 3px; }
