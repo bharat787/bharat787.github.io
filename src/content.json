@@ -1,0 +1,112 @@
+{
+  "introduction": [
+    "I'm a tech generalist, more aptly described as <em id=\"quote\">\"Jack of all trades, and mastering the art of\n                learning\".</em>",
+    "I love building things. Over the years I've utilized to AI to help others learn new skills, a platform cool enough to get acquired. I also helped create tooling at Amazon so that you don't loose packages. And in my free time dabbled with making drones fly autonomously.",
+    "Along with my band of agents, I now try to find interesting and impactful problems to solve, or just tinker around with Raspi or arduinos."
+  ],
+  "projects": [
+    {
+      "title": "Glance Mail",
+      "description": "A smarter iOS Gmail client leveraging LLMs for enhanced email management.",
+      "url": null
+    },
+    {
+      "title": "MealShare",
+      "description": "A platform to share your home-cooked meals with your community.",
+      "url": "https://github.com/bharat787/MealShare"
+    },
+    {
+      "title": "Distributed CDN DB",
+      "description": "Created a highly optimised distributed database for a CDN using Raft consensus algorithm.",
+      "url": "https://github.com/bharat787/DropTable"
+    },
+    {
+      "title": "Zero-Shot Sustained Object Tracking",
+      "description": "Advanced object segmentation and tracking algorithms for object tracking over extended periods, even through occlusions.",
+      "url": "https://colab.research.google.com/drive/1TgfCmBUY245DzEjExtpk-JFTF7U4OP_-?usp=sharing"
+    },
+    {
+      "title": "Aerial Tree Species Recognition",
+      "description": "Worked with the state's forest department to identify tree species using drones.",
+      "url": "https://github.com/bharat787/ForestDeptProj"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Handshake",
+      "role": "Software Engineer II",
+      "description": "Building Handshake Learn, a new AI skills development platform. Responsible for building AI and content Infra to support millions of learners",
+      "url": "https://joinhandshake.com/"
+    },
+    {
+      "company": "Uplimit (acquired by Handshake)",
+      "role": "Full Stack Developer & Tech Lead",
+      "description": "Joined as engineer #6 and helped evolve Uplimit from an early-stage product into an enterprise-ready learning platform, supporting 2x revenue growth and multi-fold client growth. Led a cross-functional team in re-architecting the core editor platform, building reusable infrastructure for course authoring and AI-native experiences across the product. Built a context-driven learning approach for Uplimit’s AI Coach, enabling real-time, personalized guidance for students.",
+      "url": "https://uplimit.com/"
+    },
+    {
+      "company": "GuruQ",
+      "role": "Full Stack Freelancer",
+      "description": "Worked across the stack to build and expand features on mobile and web. The App has over 100K downloads on the Android app store and has over 300K Students and 35K Tutors. The product was built using React Native, React, NestJS, GraphQL, Apollo, PostgreSQL and AWS.",
+      "url": "https://www.guruq.in/"
+    },
+    {
+      "company": "Amazon",
+      "role": "SDE Intern",
+      "description": "Worked on mobile/web app and backend services used by Amazon associates in Amazon fulfillment centers. Orchestrated end-to-end development of features from communication with stakeholders to deployment. Also rebuilt the team's CI/CD pipeline to improve developer productivity. Used React, React Native, Java, Ruby and AWS.",
+      "url": "https://www.amazon.jobs/en/teams/last-mile-org"
+    },
+    {
+      "company": "Rippl",
+      "role": "SDE Intern",
+      "description": "Developed the entire web platform in Next.js. The web app serves as their main product and sees 100K MAU. Also created gateway services for easier client-side integration. Used React, Next.js and Swagger.",
+      "url": "https://www.rippl.club/"
+    },
+    {
+      "company": "Classup",
+      "role": "SDE Intern",
+      "description": "Interned as a React Native mobile app developer and refactored the code base from Kotlin to React Native. Also overhauled the mobile UI. Used React Native, Kotlin.",
+      "url": null
+    }
+  ],
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/bharat787"
+    },
+    {
+      "label": "X",
+      "url": "https://twitter.com/bgbharat787"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/bharatgupta787"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:contact@bharat-gupta.com"
+    },
+    {
+      "label": "Résumé",
+      "url": "https://drive.google.com/file/d/1Pz34J_8c_5zc-sNj1F8bp0vMtXjunGVL/view?usp=sharing"
+    }
+  ],
+  "moreProjects": {
+    "label": "Other projects",
+    "url": "https://github.com/bharat787?tab=repositories"
+  },
+  "contributions": [
+    {
+      "label": "co-tracker",
+      "url": "https://github.com/facebookresearch/co-tracker"
+    },
+    {
+      "label": "sam-pt",
+      "url": "https://github.com/SysCV/sam-pt"
+    },
+    {
+      "label": "Fast-Planner",
+      "url": "https://github.com/HKUST-Aerial-Robotics/Fast-Planner"
+    }
+  ]
+}
