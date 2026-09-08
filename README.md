@@ -18,7 +18,7 @@ npm run lint
 npm run build
 ```
 
-The production website is generated in `dist/`; deploy that directory rather than the source repository root. `public/` preserves the favicon, custom domain file, and GlanceMail privacy policy. No deployment has been configured or performed as part of this local redesign.
+The production website is generated in `dist/`; deploy that directory rather than the source repository root. `public/` preserves the favicon, custom domain file, and GlanceMail privacy policy. The GitHub Actions workflow in `.github/workflows/deploy.yml` builds and deploys `dist/` on pushes to `main`. In repository Settings → Pages, set Source to **GitHub Actions**. Pull requests run build and lint checks without deploying.
 
 Edit portfolio copy in `src/content.json`, layout in `src/App.tsx`, and styles in `src/style.css`. The original SVG geometry and stipple morph live in `src/scenes/`, `src/dither/`, and `src/components/TransitionScene.tsx`. Scene timing follows the actual section positions, holding the skyline throughout the work content and reversing when scrolling upward. Reduced-motion preferences switch directly between scenes.
 
