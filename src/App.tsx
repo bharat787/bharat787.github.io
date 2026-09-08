@@ -1,17 +1,35 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { TransitionScene } from './components/TransitionScene'
 import content from './content.json'
 import { WorkExplorer } from './components/WorkExplorer'
 import { AnimatedName } from './components/AnimatedName'
 
 export default function App() {
+  const scrollerRef = useRef<HTMLDivElement>(null)
   const [hasScrolled, setHasScrolled] = useState(false)
   const [atEnd, setAtEnd] = useState(false)
+
+  useEffect(() => {
+    // The artwork sits outside the content viewport. Forward wheel gestures
+    // from that area without interfering with native scrolling inside it.
+    function scrollFromArtwork(event: WheelEvent) {
+      const scroller = scrollerRef.current
+      if (!scroller || event.ctrlKey || event.defaultPrevented ||
+        (event.target instanceof Node && scroller.contains(event.target))) return
+      if (!event.deltaY) return
+      const unit = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 16
+        : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? scroller.clientHeight : 1
+      event.preventDefault()
+      scroller.scrollBy({ top: event.deltaY * unit, behavior: 'instant' })
+    }
+    document.addEventListener('wheel', scrollFromArtwork, { passive: false })
+    return () => document.removeEventListener('wheel', scrollFromArtwork)
+  }, [])
 
   return <>
     <a className="skip-link" href="#introduction">Skip to content</a>
     <TransitionScene />
-    <div className="content-viewport" id="portfolio-scroll" tabIndex={0} aria-label="Portfolio content"
+    <div ref={scrollerRef} className="content-viewport" id="portfolio-scroll" tabIndex={0} aria-label="Portfolio content"
       onScroll={event => {
         const scroller = event.currentTarget
         if (scroller.scrollTop > 8) setHasScrolled(true)
