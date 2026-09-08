@@ -29,24 +29,21 @@
       "title": "Aerial Tree Species Recognition",
       "description": "Worked with the state's forest department to identify tree species using drones.",
       "url": "https://github.com/bharat787/ForestDeptProj"
-    },
-    {
-      "title": "C19",
-      "description": "An app and wearable device to help people maintain social distancing, and contact-tracing.",
-      "url": "https://github.com/bharat787/C19_App"
-    },
-    {
-      "title": "AeroD Website",
-      "description": "Made a delightful website for my university's Aerodynamics club.",
-      "url": "https://github.com/AeroDBPGC/website"
-    },
-    {
-      "title": "Other Projects",
-      "description": "",
-      "url": "https://github.com/bharat787?tab=repositories"
     }
   ],
   "experience": [
+    {
+      "company": "Handshake",
+      "role": "Software Engineer II",
+      "description": "Building Handshake Learn, a new AI skills development platform. Responsible for building AI and content Infra to support millions of learners",
+      "url": "https://joinhandshake.com/"
+    },
+    {
+      "company": "Uplimit (acquired by Handshake)",
+      "role": "Full Stack Developer & Tech Lead",
+      "description": "Joined as engineer #6 and helped evolve Uplimit from an early-stage product into an enterprise-ready learning platform, supporting 2x revenue growth and multi-fold client growth. Led a cross-functional team in re-architecting the core editor platform, building reusable infrastructure for course authoring and AI-native experiences across the product. Built a context-driven learning approach for Uplimit’s AI Coach, enabling real-time, personalized guidance for students.",
+      "url": "https://uplimit.com/"
+    },
     {
       "company": "GuruQ",
       "role": "Full Stack Freelancer",
@@ -70,6 +67,46 @@
       "role": "SDE Intern",
       "description": "Interned as a React Native mobile app developer and refactored the code base from Kotlin to React Native. Also overhauled the mobile UI. Used React Native, Kotlin.",
       "url": null
+    }
+  ],
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/bharat787"
+    },
+    {
+      "label": "X",
+      "url": "https://twitter.com/bgbharat787"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/bharatgupta787"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:contact@bharat-gupta.com"
+    },
+    {
+      "label": "Résumé",
+      "url": "https://drive.google.com/file/d/1Pz34J_8c_5zc-sNj1F8bp0vMtXjunGVL/view?usp=sharing"
+    }
+  ],
+  "moreProjects": {
+    "label": "Other projects",
+    "url": "https://github.com/bharat787?tab=repositories"
+  },
+  "contributions": [
+    {
+      "label": "co-tracker",
+      "url": "https://github.com/facebookresearch/co-tracker"
+    },
+    {
+      "label": "sam-pt",
+      "url": "https://github.com/SysCV/sam-pt"
+    },
+    {
+      "label": "Fast-Planner",
+      "url": "https://github.com/HKUST-Aerial-Robotics/Fast-Planner"
     }
   ]
 }

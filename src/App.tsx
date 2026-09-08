@@ -25,7 +25,7 @@ export default function App() {
       </section>
       <WorkExplorer />
       <section className="connect scene" id="socials"><div><h2>Let’s connect<span>.</span></h2><div className="social-links">
-        <a href="mailto:contact@bharat-gupta.com">Email</a><a href="https://linkedin.com/in/bharatgupta787" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/bharat787" target="_blank" rel="noreferrer">GitHub</a><a href="https://twitter.com/bgbharat787" target="_blank" rel="noreferrer">X / Twitter</a><a href="https://drive.google.com/file/d/1GCk-mhj-MO50e5Bshr2pqCt_B9MC5GSj/view?usp=sharing" target="_blank" rel="noreferrer">Résumé</a>
+        {content.socials.map(link => <a key={link.label} href={link.url} target={link.url.startsWith('mailto:') ? undefined : '_blank'} rel="noreferrer">{link.label}</a>)}
       </div></div></section>
     </main>
     </div>

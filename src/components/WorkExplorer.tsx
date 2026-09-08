@@ -43,13 +43,13 @@ export function WorkExplorer() {
     const item = job ?? project
     if (!item) return null
     return <article className="focus-details" >
-      <button className="view-rest" onClick={restore} disabled={motion === 'closing'}>View all</button>
-      <h2 ref={detailRef} tabIndex={-1}>{job?.company ?? project?.title}<span>.</span></h2>
+      <button className="view-rest" onClick={restore} disabled={motion === 'closing'}>{job ? 'View projects' : 'View experience'}</button>
+      <h2 ref={detailRef} tabIndex={-1}>{job?.company ?? project?.title}</h2>
       {job && <p className="detail-role">{job.role}</p>}
       {item.description && <p className="detail-description">{item.description}</p>}
       {project && !project.url && <p className="detail-role">Beta soon</p>}
       {item.url && <a className="detail-link" href={item.url} target="_blank" rel="noreferrer">
-        {job ? 'Visit company' : project?.title === 'Other Projects' ? 'Browse repositories' : 'View project'}
+        {job ? 'Visit company' : 'View project'}
       </a>}
     </article>
   }
@@ -57,7 +57,7 @@ export function WorkExplorer() {
   return <section className="work scene work-explorer" id="work" aria-label="Work experience and projects">
     <div className="work-column explorer-panel" id="workex">
       <div className={`panel-layer${project ? '' : ' is-active'}`} inert={!!project} aria-hidden={!!project}>
-        <h2>Where I’ve been<span>.</span></h2>
+        <h2>Where I’ve been</h2>
         <ul className="explorer-names">
           {content.experience.map((item, index) => <li key={item.company}>
             <button aria-pressed={selection?.kind === 'company' && selection.index === index}
@@ -76,17 +76,17 @@ export function WorkExplorer() {
     </div>
     <div className="projects-column explorer-panel" id="projects">
       <div className={`panel-layer${job ? '' : ' is-active'}`} inert={!!job} aria-hidden={!!job}>
-        <h2>Things I built<span>.</span></h2>
+        <h2>Things I built</h2>
         <ul className="explorer-names">
           {content.projects.map((item, index) => <li key={item.title}>
             <button aria-pressed={selection?.kind === 'project' && selection.index === index}
               aria-controls="project-details" onClick={event => select('project', index, event.currentTarget)}>{item.title}</button>
           </li>)}
         </ul>
-        <div className="open-source"><p className="eyebrow">OPEN SOURCE CONTRIBUTIONS</p>
-          <a href="https://github.com/facebookresearch/co-tracker" target="_blank" rel="noreferrer">co-tracker</a>
-          <a href="https://github.com/SysCV/sam-pt" target="_blank" rel="noreferrer">sam-pt</a>
-          <a href="https://github.com/HKUST-Aerial-Robotics/Fast-Planner" target="_blank" rel="noreferrer">Fast-Planner</a>
+        <div className="open-source">
+          <p className="eyebrow"><a href={content.moreProjects.url} target="_blank" rel="noreferrer">{content.moreProjects.label.toUpperCase()}</a></p>
+          <p className="eyebrow">OPEN SOURCE CONTRIBUTIONS</p>
+          {content.contributions.map(link => <a key={link.label} href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
         </div>
       </div>
       <div id="company-details" className={`panel-layer detail-layer detail-layer--company${job ? ` is-active motion-${motion}` : ''}`} inert={!job || motion === 'closing'} aria-hidden={!job}
