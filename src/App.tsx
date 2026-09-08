@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { TransitionScene } from './components/TransitionScene'
 import content from './content.json'
 import { WorkExplorer } from './components/WorkExplorer'
+import { AnimatedName } from './components/AnimatedName'
 
 export default function App() {
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -19,7 +20,7 @@ export default function App() {
     <header><a className="wordmark" href="#introduction" aria-label="Bharat Gupta home">bg<span>.</span></a><nav aria-label="Main navigation"><a href="#work">Work & projects</a><a href="#socials">Let’s connect</a></nav></header>
     <main>
       <section className="intro scene" id="introduction">
-        <div className="intro-copy"><h1>Hi, I’m Bharat <span className="greeting">ヾ(＾-＾)ノ</span></h1>
+        <div className="intro-copy"><h1>Hi, I’m <AnimatedName /> <span className="greeting">ヾ(＾-＾)ノ</span></h1>
           {content.introduction.map((paragraph, i) => <p key={i} className={i === 0 ? 'lead' : undefined} dangerouslySetInnerHTML={{ __html: paragraph }} />)}
         </div>
       </section>

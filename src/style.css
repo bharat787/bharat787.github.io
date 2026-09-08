@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600&display=swap');
 :root {
   font-family:'DM Sans',sans-serif;
   color:#282822;
@@ -581,3 +581,35 @@ header, .intro, .work, .connect {
 @media (max-width: 760px) {
   :root { --content-gutter: max(24px, 7vw); }
 }
+
+
+.animated-name {
+  display: inline-grid;
+  align-items: baseline;
+  vertical-align: baseline;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+ .animated-name__word {
+  grid-area: 1 / 1;
+  line-height: inherit;
+}
+.animated-name__english {
+  display: inline-block;
+}
+
+.animated-name__hindi {
+  color: var(--accent);
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.animated-name__english { clip-path: inset(0 100% 0 0); }
+.animated-name:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
