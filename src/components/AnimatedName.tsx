@@ -28,6 +28,7 @@ export function AnimatedName() {
       timeline = gsap.timeline({ defaults: { duration: reducedMotion.matches ? 0 : 0.45, ease: 'power2.inOut' } })
         .to(outgoing, { clipPath: 'inset(0 0 0 100%)' }, 0)
         .to(incoming, { clipPath: 'inset(0 0% 0 0)' }, 0)
+        .set(incoming, { clipPath: 'none' })
     }
     function enter() {
       interacted = true

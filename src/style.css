@@ -585,6 +585,9 @@ header, .intro, .work, .connect {
 
 .animated-name {
   display: inline-grid;
+  grid-template-columns: max-content;
+  width: max-content;
+  white-space: nowrap;
   align-items: baseline;
   vertical-align: baseline;
   border: 0;
@@ -613,3 +616,50 @@ header, .intro, .work, .connect {
 }
 .animated-name__english { clip-path: inset(0 100% 0 0); }
 .animated-name:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+
+/* Give the name its full intrinsic width, with the greeting on a separate
+   line on narrow screens instead of competing for the same line. */
+@media (max-width: 480px) {
+  .intro h1 { font-size: clamp(32px, 10vw, 40px); }
+  .intro .greeting {
+    display: block;
+    width: max-content;
+    margin: 14px 0 0;
+    white-space: nowrap;
+  }
+}
+
+.mobile-explorer { display: none; }
+@media (max-width: 760px) {
+  .work-explorer > .explorer-panel { display: none; }
+  .mobile-explorer { display: block; min-width: 0; }
+  .explorer-accordion { border-top: 1px solid #ccc8be; }
+  .explorer-accordion summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 0;
+    list-style: none;
+    font: 500 20px/1.4 'Space Grotesk', sans-serif;
+    letter-spacing: -.025em;
+    cursor: pointer;
+  }
+  .explorer-accordion summary::-webkit-details-marker { display: none; }
+  .explorer-accordion summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .explorer-accordion[open] summary { color: var(--accent); }
+  .accordion-chevron {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    margin-right: 4px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .explorer-accordion[open] .accordion-chevron { transform: rotate(225deg); }
+  .accordion-body { padding: 0 0 24px; }
+  .accordion-body .detail-description { font-size: 14px; margin: 0; }
+  .accordion-body .detail-role { margin: 0 0 12px; }
+  .accordion-body .detail-link { margin-top: 14px; }
+}

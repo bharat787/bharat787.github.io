@@ -3,6 +3,31 @@ import content from '../content.json'
 
 type Selection = { kind: 'company' | 'project'; index: number } | null
 
+function OpenSource() {
+  return <div className="open-source">
+    <p className="eyebrow"><a href={content.moreProjects.url} target="_blank" rel="noreferrer">{content.moreProjects.label.toUpperCase()}</a></p>
+    <p className="eyebrow">OPEN SOURCE CONTRIBUTIONS</p>
+    {content.contributions.map(link => <a key={link.label} href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
+  </div>
+}
+
+function MobileAccordion({ kind }: { kind: 'company' | 'project' }) {
+  const items = kind === 'company' ? content.experience : content.projects
+  return <div className="mobile-explorer">
+    <h2>{kind === 'company' ? 'Where I’ve been' : 'Things I built'}</h2>
+    {items.map(item => <details className="explorer-accordion" key={'company' in item ? item.company : item.title}>
+      <summary>{'company' in item ? item.company : item.title}<span className="accordion-chevron" aria-hidden="true" /></summary>
+      <div className="accordion-body">
+        {'role' in item && <p className="detail-role">{item.role}</p>}
+        {item.description && <p className="detail-description">{item.description}</p>}
+        {kind === 'project' && !item.url && <p className="detail-role">Beta soon</p>}
+        {item.url && <a className="detail-link" href={item.url} target="_blank" rel="noreferrer">{kind === 'company' ? 'Visit company' : 'View project'}</a>}
+      </div>
+    </details>)}
+    {kind === 'project' && <OpenSource />}
+  </div>
+}
+
 export function WorkExplorer() {
   const [selection, setSelection] = useState<Selection>(null)
   const [motion, setMotion] = useState<'entering' | 'open' | 'closing'>('open')
@@ -55,6 +80,8 @@ export function WorkExplorer() {
   }
 
   return <section className="work scene work-explorer" id="work" aria-label="Work experience and projects">
+    <MobileAccordion kind="company" />
+    <MobileAccordion kind="project" />
     <div className="work-column explorer-panel" id="workex">
       <div className={`panel-layer${project ? '' : ' is-active'}`} inert={!!project} aria-hidden={!!project}>
         <h2>Where I’ve been</h2>
@@ -83,11 +110,7 @@ export function WorkExplorer() {
               aria-controls="project-details" onClick={event => select('project', index, event.currentTarget)}>{item.title}</button>
           </li>)}
         </ul>
-        <div className="open-source">
-          <p className="eyebrow"><a href={content.moreProjects.url} target="_blank" rel="noreferrer">{content.moreProjects.label.toUpperCase()}</a></p>
-          <p className="eyebrow">OPEN SOURCE CONTRIBUTIONS</p>
-          {content.contributions.map(link => <a key={link.label} href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
-        </div>
+        <OpenSource />
       </div>
       <div id="company-details" className={`panel-layer detail-layer detail-layer--company${job ? ` is-active motion-${motion}` : ''}`} inert={!job || motion === 'closing'} aria-hidden={!job}
         onAnimationEnd={event => {
